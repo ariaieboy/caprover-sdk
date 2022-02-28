@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ariaieboy/caprover-sdk",
+    "description": "a PHP SDK for CapRover api",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "ariaieboy",
+        "caprover-sdk"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ariaieboy/caprover-sdk",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "AriaieBOY",
+            "email": "smr.seddighy@gmail.com",
             "role": "Developer"
         }
     ],
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Ariaieboy\\CaproverSdk\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Ariaieboy\\CaproverSdk\\Tests\\": "tests"
         }
     },
     "scripts": {
