@@ -7,6 +7,13 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class CaproverLaravelServiceProvider extends PackageServiceProvider
 {
+    public function packageRegistered(): void
+    {
+        $this->app->bind('caprover-laravel', function () {
+            return new CaproverLaravel();
+        });
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
