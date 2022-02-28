@@ -17,9 +17,6 @@ class CaproverLaravelServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('caprover-laravel')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_caprover-laravel_table')
-            ->hasCommand(CaproverLaravelCommand::class);
+            ->hasConfigFile();
     }
 }
