@@ -2,6 +2,7 @@
 
 namespace Ariaieboy\CaproverSdk\Exceptions;
 
-class CannotGetTokenException extends \Exception
+class CaproverApiCallErrorException extends \Exception
 {
+
 }
