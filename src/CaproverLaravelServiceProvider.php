@@ -4,7 +4,6 @@ namespace Ariaieboy\CaproverLaravel;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Ariaieboy\CaproverLaravel\Commands\CaproverLaravelCommand;
 
 class CaproverLaravelServiceProvider extends PackageServiceProvider
 {

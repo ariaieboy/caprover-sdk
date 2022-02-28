@@ -1,19 +1,12 @@
 # CapRover SDK for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ariaieboy/caprover-laravel.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/caprover-laravel)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ariaieboy/caprover-laravel/run-tests?label=tests)](https://github.com/ariaieboy/caprover-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ariaieboy/caprover-laravel/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ariaieboy/caprover-laravel/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ariaieboy/caprover-laravel.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/caprover-laravel)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
-## Support us
+[Caprover](https://github.com/caprover/caprover) is a "Free and Open Source PaaS".
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/caprover-laravel.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/caprover-laravel)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+You can interact with Caprover Api using this Package in your php projects.
 
 ## Installation
 
@@ -23,14 +16,11 @@ You can install the package via composer:
 composer require ariaieboy/caprover-laravel
 ```
 
-You can publish and run the migrations with:
+## Usage
 
-```bash
-php artisan vendor:publish --tag="caprover-laravel-migrations"
-php artisan migrate
-```
+#### step 1:
 
-You can publish the config file with:
+publish config file and set your credentials:
 
 ```bash
 php artisan vendor:publish --tag="caprover-laravel-config"
@@ -40,27 +30,41 @@ This is the contents of the published config file:
 
 ```php
 return [
+    // you caprover main domain that poin to the admin area
+    'server'=>env('CAPROVER_SERVER'),
+    // the password of your caprover admin panel
+    'password'=>env('CAPROVER_PASSWORD'),
+    // guzzle timeout in seconds
+    'timeout'=>env('CAPROVER_TIMEOUT',60)
 ];
 ```
+you can use .env file instead:
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="caprover-laravel-views"
+```dotenv
+#/.env file
+CAPROVER_SERVER=YOUR_CAPROVER_MAIN_DOMAIN
+CAPROVER_PASSWORD=YOUR_CAPROVER_PASSWORD
+CAPROVER_TIMEOUT=60 #its the guzzle timeout in seconds
 ```
-
-## Usage
 
 ```php
 $caproverLaravel = new Ariaieboy\CaproverLaravel();
-echo $caproverLaravel->echoPhrase('Hello, Ariaieboy!');
+
+// or you can use the CaproverLaravel facade
+
+\Ariaieboy\CaproverLaravel\Facades\CaproverLaravel::method($args);
 ```
+# ⚠️ Read this section before you use this package
+
+this package using [Caprover-sdk](https://github.com/ariaieboy/caprover-sdk) in the background.
+
+before using this package please read `caprover-sdk` [README.md](https://github.com/ariaieboy/caprover-sdk/tree/main#readme) README file for more details about available methods
+and the limitations.
 
 ## Testing
 
-```bash
-composer test
-```
+we need some help for the testing part of this package. we will accept any PR for testing.
+
 
 ## Changelog
 
