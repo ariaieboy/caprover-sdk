@@ -122,7 +122,7 @@ class CaproverSdk
      * @param string $customDomain
      * @return mixed
      */
-    public function getHost(string $customDomain): mixed
+    protected function getHost(string $customDomain): mixed
     {
         return parse_url($customDomain)['host'];
     }

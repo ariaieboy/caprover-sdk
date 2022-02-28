@@ -3,15 +3,25 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ariaieboy/caprover-sdk.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/caprover-sdk)
 [![Total Downloads](https://img.shields.io/packagist/dt/ariaieboy/caprover-sdk.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/caprover-sdk)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+[Caprover](https://github.com/caprover/caprover) is a "Free and Open Source PaaS".
 
-## Support us
+You can interact with Caprover Api using this Package in your php projects.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/caprover-sdk.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/caprover-sdk)
+# ⚠️ Read this section before you use this package
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+according to this [section](https://github.com/caprover/caprover) the API of the Caprover is not documented anywhere.
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+`There is no official document for the API commands at this point as it is subject to change at any point.`
+
+the line above is the exact sentence that Caprover team put in the api section of the `Caprover cli`.
+
+because of this we can't guarantee that this sdk will work with all versions of the `Caprover`.
+
+we will test each release of [`Caprover-Sdk`](https://github.com/ariaieboy/caprover-sdk) with the latest version of
+the `Caprover` and we only guarantee that this package will work to the latest version.
+
+the latest release is tested with [v1.10.1](https://github.com/caprover/caprover/releases/tag/v1.10.1) of the `Caprover`
+.
 
 ## Installation
 
@@ -24,15 +34,54 @@ composer require ariaieboy/caprover-sdk
 ## Usage
 
 ```php
-$skeleton = new Ariaieboy\CaproverSdk();
-echo $skeleton->echoPhrase('Hello, Ariaieboy!');
+
+
+    try {
+        $cs = new Ariaieboy\CaproverSdk\CaproverSdk();
+        $res = $cs->methode($vars);
+    } catch (\Ariaieboy\CaproverSdk\Exceptions\InvalidCaproverServerInfoException $e) {
+        //this exception happens when you put invalid Caprover information like ServerName or ServerPassword
+    } catch (\Ariaieboy\CaproverSdk\Exceptions\CaproverErrorException $e) {
+        /*
+         * the code of the Caprover Error
+         * for more info check CaproverApiStatus.php
+         */
+        echo $e->getCode();
+        // the message of the error
+        echo $e->getMessage();
+    } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+        //any guzzle error can be handeled here
+    } catch (Exception $e) {
+        //any other exception can be handeled here
+    }
+```
+
+## Available Methods
+
+```php
+    /*
+     * you can attach a custom domain to your apps
+     * 
+     * @return true on success
+     */
+    $cs->attachNewCustomDomainToApp("appName", "customDomain")
+    /*
+     * you can enable SSL for attached custom domain of your apps
+     * 
+     * @return true on success
+     */
+    $cs->enableSslForCustomDomain("appName", "customDomain")
+    /*
+     * you can remove attached custom domain to your apps
+     * 
+     * @return true on success
+     */
+    $cs->public function removeCustomDomain("appName", "customDomain")
 ```
 
 ## Testing
 
-```bash
-composer test
-```
+we need some help for the testing part of this package. we will accept any PR for testing.
 
 ## Changelog
 
