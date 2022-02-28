@@ -36,4 +36,8 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <server name="CAPROVER_SERVER" value="YOUR CAPROVER_SERVER URL"/>
+        <server name="CAPROVER_PASSWORD" value="YOUR CAPROVER_PASSWORD" />
+    </php>
 </phpunit>
