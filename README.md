@@ -78,6 +78,7 @@ composer require ariaieboy/caprover-sdk
      */
     $cs->public function removeCustomDomain("appName", "customDomain")
 ```
+more methods will be available in next releases.
 
 ## Testing
 
