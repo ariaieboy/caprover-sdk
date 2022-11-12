@@ -38,7 +38,7 @@ composer require ariaieboy/caprover-sdk
 
     try {
         $cs = new Ariaieboy\CaproverSdk\CaproverSdk();
-        $res = $cs->methode($vars);
+        $res = $cs->method($vars);
     } catch (\Ariaieboy\CaproverSdk\Exceptions\InvalidCaproverServerInfoException $e) {
         //this exception happens when you put invalid Caprover information like ServerName or ServerPassword
     } catch (\Ariaieboy\CaproverSdk\Exceptions\CaproverErrorException $e) {
