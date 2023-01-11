@@ -18,7 +18,7 @@
     "require": {
         "php": "~8.1.0|~8.2.0",
         "ariaieboy/caprover-sdk": "^0.1.1",
-        "illuminate/contracts": "^9.30",
+        "illuminate/contracts": "^9.30|^10.0",
         "spatie/laravel-package-tools": "^1.13.5"
     },
     "require-dev": {
