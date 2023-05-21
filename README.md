@@ -23,7 +23,7 @@ composer require ariaieboy/caprover-laravel
 publish config file and set your credentials:
 
 ```bash
-php artisan vendor:publish --tag="caprover-laravel-config"
+php artisan vendor:publish --tag="caprover-config"
 ```
 
 This is the contents of the published config file:
@@ -48,11 +48,11 @@ CAPROVER_TIMEOUT=60 #its the guzzle timeout in seconds
 ```
 
 ```php
-$caproverLaravel = new Ariaieboy\CaproverLaravel();
+$caproverLaravel = new Ariaieboy\Caprover();
 
 // or you can use the CaproverLaravel facade
 
-\Ariaieboy\CaproverLaravel\Facades\CaproverLaravel::method($args);
+\Ariaieboy\CaproverLaravel\Facades\Caprover::method($args);
 ```
 # ⚠️ Read this section before you use this package
 

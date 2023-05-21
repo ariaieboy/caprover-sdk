@@ -52,10 +52,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ariaieboy\\CaproverSDK\\CaproverLaravelServiceProvider"
+                "Ariaieboy\\Caprover\\CaproverServiceProvider"
             ],
             "aliases": {
-                "CaproverLaravel": "Ariaieboy\\CaproverSDK\\Facades\\CaproverLaravel"
+                "CaproverLaravel": "Ariaieboy\\Caprover\\Facades\\Caprover"
             }
         }
     },

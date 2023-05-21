@@ -1,16 +1,16 @@
 <?php
 
-namespace Ariaieboy\CaproverSDK;
+namespace Ariaieboy\Caprover;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class CaproverSDKServiceProvider extends PackageServiceProvider
+class CaproverServiceProvider extends PackageServiceProvider
 {
     public function packageRegistered(): void
     {
-        $this->app->bind('caprover-laravel', function () {
-            return new CaproverSDK();
+        $this->app->bind('caprover', function () {
+            return new Caprover();
         });
     }
 
@@ -22,7 +22,7 @@ class CaproverSDKServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('caprover-laravel')
+            ->name('caprover')
             ->hasConfigFile();
     }
 }

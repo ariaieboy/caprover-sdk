@@ -1,8 +1,8 @@
 <?php
 
-namespace Ariaieboy\CaproverSDK;
+namespace Ariaieboy\Caprover;
 
-class CaproverSDK
+class Caprover
 {
     public function __construct(string $server = null, string $password = null, int $timeout = null)
     {
