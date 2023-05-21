@@ -16,6 +16,9 @@ class Caprover extends Connector
 
     /**
      * @throws JsonException
+     * @throws InvalidResponseClassException
+     * @throws ReflectionException
+     * @throws PendingRequestException
      */
     public function __construct(readonly protected string $server, readonly protected string $password, protected int $timeout = 60)
     {
