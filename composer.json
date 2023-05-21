@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ariaieboy\\CaproverSDK\\": "src"
+            "Ariaieboy\\Caprover\\": "src"
         }
     },
     "autoload-dev": {

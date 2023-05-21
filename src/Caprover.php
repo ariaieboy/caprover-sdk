@@ -2,12 +2,15 @@
 
 namespace Ariaieboy\Caprover;
 
-class Caprover
+use Saloon\Http\Connector;
+
+class Caprover extends Connector
 {
-    public function __construct(string $server = null, string $password = null, int $timeout = null)
+    public function __construct(readonly protected string $server, readonly protected string $password, protected int $timeout)
     {
-        $server ??= config('caprover-laravel.server') ?? '';
-        $password ??= config('caprover-laravel.password') ?? '';
-        $timeout ??= config('caprover-laravel.timeout') ?? 60;
+    }
+    public function resolveBaseUrl(): string
+    {
+        return rtrim($this->server, '/') . '/api/v2';
     }
 }
