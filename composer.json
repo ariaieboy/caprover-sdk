@@ -1,39 +1,40 @@
 {
-    "name": "ariaieboy/caprover-laravel",
-    "description": "CapRover SDK for Laravel",
+    "name": "ariaieboy/caprover-sdk",
+    "description": "CapRover SDK for PHP and Laravel",
     "keywords": [
         "ariaieboy",
         "laravel",
-        "caprover-laravel"
+        "caprover-laravel",
+        "caprover sdk",
+        "sdk"
     ],
-    "homepage": "https://github.com/ariaieboy/caprover-laravel",
+    "homepage": "https://github.com/ariaieboy/caprover-sdk",
     "license": "MIT",
     "authors": [
         {
             "name": "AriaieBOY",
-            "email": "smr.seddighy@gmail.com",
+            "email": "ariaieboy.ir@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "~8.1.0|~8.2.0",
-        "ariaieboy/caprover-sdk": "^0.1.1",
         "illuminate/contracts": "^9.30|^10.0",
         "spatie/laravel-package-tools": "^1.13.5"
     },
     "require-dev": {
-        "graham-campbell/testbench": "^5.7",
-        "pestphp/pest": "^1.22.1",
-        "pestphp/pest-plugin-laravel": "^1.2"
+        "graham-campbell/testbench": "^6",
+        "pestphp/pest": "^2",
+        "pestphp/pest-plugin-laravel": "^2"
     },
     "autoload": {
         "psr-4": {
-            "Ariaieboy\\CaproverLaravel\\": "src"
+            "Ariaieboy\\CaproverSDK\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ariaieboy\\CaproverLaravel\\Tests\\": "tests"
+            "Ariaieboy\\CaproverSDK\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ariaieboy\\CaproverLaravel\\CaproverLaravelServiceProvider"
+                "Ariaieboy\\CaproverSDK\\CaproverLaravelServiceProvider"
             ],
             "aliases": {
-                "CaproverLaravel": "Ariaieboy\\CaproverLaravel\\Facades\\CaproverLaravel"
+                "CaproverLaravel": "Ariaieboy\\CaproverSDK\\Facades\\CaproverLaravel"
             }
         }
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ariaieboy\CaproverLaravel\Facades;
+namespace Ariaieboy\CaproverSDK\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @see \Ariaieboy\CaproverSdk\CaproverSdk::enableSslForCustomDomain
  * @method static bool enableSslForCustomDomain(string $appName, string $customDomain)
  */
-class CaproverLaravel extends Facade
+class CaproverSDK extends Facade
 {
     protected static function getFacadeAccessor()
     {

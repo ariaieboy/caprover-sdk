@@ -1,5 +1,6 @@
 <?php
 
-use Ariaieboy\CaproverLaravel\Tests\TestCase;
+
+use Ariaieboy\CaproverSDK\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
