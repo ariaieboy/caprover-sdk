@@ -1,0 +1,1 @@
+{"statusCode":200,"headers":{"Server":"nginx","Date":"Tue, 23 May 2023 21:21:20 GMT","Content-Type":"application\/json; charset=utf-8","Content-Length":"95","Connection":"keep-alive","X-Powered-By":"Express","ETag":"W\/\"5f-bi9hJZdPwPHopT7C1mnqaiCX+Hw\""},"data":"{\"status\":100,\"description\":\"Custom domain SSL is enabled for: test at test.cnz.ir \",\"data\":{}}"}
