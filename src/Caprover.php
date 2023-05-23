@@ -6,6 +6,7 @@ use Ariaieboy\Caprover\Common\CaproverAuthenticator;
 use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
 use Ariaieboy\Caprover\Requests\EnableSslForCustomDomain;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
+use Ariaieboy\Caprover\Requests\RemoveCustomDomain;
 use Ariaieboy\Caprover\Responses\CaproverResponse;
 use JsonException;
 use ReflectionException;
@@ -61,12 +62,21 @@ class Caprover extends Connector
         $request->authenticate(new CaproverAuthenticator($this->authToken));
         return $this->send($request);
     }
+
     public function enableSslForCustomDomain(string $appName, string $customDomain): CaproverResponse
     {
         $request = new EnableSslForCustomDomain($appName, $customDomain);
         $request->authenticate(new CaproverAuthenticator($this->authToken));
         return $this->send($request);
     }
+
+    public function removeCustomDomain(string $appName, string $customDomain): CaproverResponse
+    {
+        $request = new RemoveCustomDomain($appName, $customDomain);
+        $request->authenticate(new CaproverAuthenticator($this->authToken));
+        return $this->send($request);
+    }
+
     public function resolveBaseUrl(): string
     {
         return rtrim($this->server, '/') . '/api/v2';
