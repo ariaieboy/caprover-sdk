@@ -19,7 +19,7 @@ The line above is the exact sentence the Caprover team put in the API section of
 Because of this, we can't guarantee that this SDK will work with all versions of the `Caprover`.
 
 We will test each release of [`Caprover-Sdk`](https://github.com/ariaieboy/caprover-sdk) with the latest version of
-the `Caprover`, and we only guarantee that this package will work to the newest version.
+the `Caprover`, and we only guarantee that this package will work with the newest version.
 
 The latest release is tested with [v1.10.1](https://github.com/caprover/caprover/releases/tag/v1.10.1) of the `Caprover`
 .
