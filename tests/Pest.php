@@ -10,7 +10,7 @@ uses(TestCase::class)->beforeEach(function (){
     $this->mockClient = new MockClient([
         '*' => function (PendingRequest $request) {
             $reflection = new ReflectionClass($request->getRequest());
-            $fake = \Illuminate\Support\Arr::first(array_filter($request->body()->all(),function ($var){
+            $fake = \Illuminate\Support\Arr::first(array_filter($request->body()?->all()??[],function ($var){
                 return preg_match("/fake\.*/",$var);
             }))??'';
             return MockResponse::fixture($reflection->getShortName().$fake);

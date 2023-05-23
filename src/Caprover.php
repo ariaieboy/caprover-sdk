@@ -6,6 +6,7 @@ use Ariaieboy\Caprover\Common\CaproverAuthenticator;
 use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
 use Ariaieboy\Caprover\Requests\EnableSslForCustomDomain;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
+use Ariaieboy\Caprover\Requests\GetCaptainInfo;
 use Ariaieboy\Caprover\Requests\RemoveCustomDomain;
 use Ariaieboy\Caprover\Responses\CaproverResponse;
 use JsonException;
@@ -73,6 +74,19 @@ class Caprover extends Connector
         return $this->send($request);
     }
 
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function getCaptainInfo(): CaproverResponse
+    {
+        $request = new GetCaptainInfo();
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
     /**
      * @throws InvalidResponseClassException
      * @throws Throwable
