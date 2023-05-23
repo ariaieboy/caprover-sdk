@@ -1,10 +1,10 @@
 <?php
-// config for Ariaieboy/CaproverLaravel
+// config for Ariaieboy/Caprover-sdk
 return [
-    // you caprover main domain that poin to the admin area
+    // Your Caprover main domain that point to the admin area
     'server'=>env('CAPROVER_SERVER'),
-    // the password of your caprover admin panel
+    // The password of your Caprover admin panel
     'password'=>env('CAPROVER_PASSWORD'),
-    // guzzle timeout
+    // Guzzle timeout in seconds
     'timeout'=>env('CAPROVER_TIMEOUT',60)
 ];
