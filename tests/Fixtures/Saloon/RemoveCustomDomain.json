@@ -1,0 +1,1 @@
+{"statusCode":200,"headers":{"Server":"nginx","Date":"Tue, 23 May 2023 21:13:16 GMT","Content-Type":"application\/json; charset=utf-8","Content-Length":"90","Connection":"keep-alive","X-Powered-By":"Express","ETag":"W\/\"5a-SSddUcff7\/aflJTPXHgQIq6kNS8\""},"data":"{\"status\":100,\"description\":\"Custom domain is removed for: test at test.cnz.ir\",\"data\":{}}"}
