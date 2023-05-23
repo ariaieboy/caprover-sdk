@@ -3,16 +3,23 @@
 namespace Ariaieboy\Caprover;
 
 use Ariaieboy\Caprover\Requests\GetAuthToken;
+use Ariaieboy\Caprover\Responses\CaproverResponse;
 use JsonException;
 use ReflectionException;
+use Saloon\Contracts\MockClient;
+use Saloon\Contracts\Request;
 use Saloon\Exceptions\InvalidResponseClassException;
 use Saloon\Exceptions\PendingRequestException;
 use Saloon\Http\Connector;
-use Saloon\Http\Response;
 
+/**
+ * @method send(Request $request, MockClient $mockClient = null)
+ * @returns CaproverResponse
+ */
 class Caprover extends Connector
 {
     private string $authToken;
+    protected ?string $response = CaproverResponse::class;
 
     /**
      * @throws JsonException
@@ -25,12 +32,17 @@ class Caprover extends Connector
         $this->authToken = $this->getAuthToken()->json('token');
     }
 
+    public function hasRequestFailed(\Saloon\Contracts\Response $response): ?bool
+    {
+        return ($response->json('status') !== 100 || $response->json('status') !== 101);
+    }
+
     /**
      * @throws InvalidResponseClassException
      * @throws ReflectionException
      * @throws PendingRequestException
      */
-    public function getAuthToken(): Response
+    public function getAuthToken(): CaproverResponse
     {
         return $this->send(new GetAuthToken($this->password));
     }
