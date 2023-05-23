@@ -2,6 +2,7 @@
 
 namespace Ariaieboy\Caprover\Requests;
 
+use Ariaieboy\Caprover\Common\InteractWithDomain;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
@@ -9,14 +10,16 @@ use Saloon\Traits\Body\HasJsonBody;
 class AttachNewCustomDomainToApp extends Request
 {
     use HasJsonBody;
+    use InteractWithDomain;
 
     protected Method $method = Method::POST;
 
     protected function defaultBody(): array
     {
+        $host = $this->getHost($this->customDomain);
         return [
             'appName' => $this->appName,
-            'customDomain' => $this->customDomain
+            'customDomain' => $host
         ];
     }
 
