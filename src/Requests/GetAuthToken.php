@@ -2,11 +2,12 @@
 
 namespace Ariaieboy\Caprover\Requests;
 
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-class GetAuthToken extends Request
+class GetAuthToken extends Request implements HasBody
 {
     use HasJsonBody;
 

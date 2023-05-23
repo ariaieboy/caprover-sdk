@@ -1,18 +1,13 @@
 <?php
 
-namespace Ariaieboy\CaproverSDK\Tests;
+namespace Ariaieboy\Caprover\Tests;
 
-use Ariaieboy\CaproverSDK\CaproverSDKServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
-
-class TestCase extends Orchestra
+abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-
     protected function getPackageProviders($app): array
     {
         return [
-            CaproverSDKServiceProvider::class,
+            'Ariaieboy\Caprover\CaproverServiceProvider',
         ];
     }
 }

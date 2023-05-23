@@ -10,7 +10,7 @@ class CaproverServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         $this->app->bind('caprover', function () {
-            return new Caprover();
+            return new Caprover(config('caprover.server',''),config('caprover.password',''),config('caprover.timeout',60));
         });
     }
 

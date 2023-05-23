@@ -3,11 +3,12 @@
 namespace Ariaieboy\Caprover\Requests;
 
 use Ariaieboy\Caprover\Common\InteractWithDomain;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-class AttachNewCustomDomainToApp extends Request
+class AttachNewCustomDomainToApp extends Request implements HasBody
 {
     use HasJsonBody;
     use InteractWithDomain;

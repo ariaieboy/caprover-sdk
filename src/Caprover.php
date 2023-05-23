@@ -15,6 +15,7 @@ use Saloon\Contracts\Request;
 use Saloon\Exceptions\InvalidResponseClassException;
 use Saloon\Exceptions\PendingRequestException;
 use Saloon\Http\Connector;
+use Throwable;
 
 /**
  * @method send(Request $request, MockClient $mockClient = null)
@@ -22,23 +23,16 @@ use Saloon\Http\Connector;
  */
 class Caprover extends Connector
 {
-    private string $authToken;
+    private ?string $authToken = null;
     protected ?string $response = CaproverResponse::class;
 
-    /**
-     * @throws JsonException
-     * @throws InvalidResponseClassException
-     * @throws ReflectionException
-     * @throws PendingRequestException
-     */
     public function __construct(readonly protected string $server, readonly protected string $password, protected int $timeout = 60)
     {
-        $this->authToken = $this->getAuthToken()->json('token');
     }
 
     public function hasRequestFailed(\Saloon\Contracts\Response $response): ?bool
     {
-        return ($response->json('status') !== 100 || $response->json('status') !== 101);
+        return ($response->json('status') > 101);
     }
 
     /**
@@ -52,28 +46,44 @@ class Caprover extends Connector
     }
 
     /**
-     * @throws ReflectionException
      * @throws InvalidResponseClassException
+     * @throws JsonException
      * @throws PendingRequestException
+     * @throws ReflectionException
+     * @throws Throwable
      */
     public function attachNewCustomDomainToApp(string $appName, string $customDomain): CaproverResponse
     {
         $request = new AttachNewCustomDomainToApp($appName, $customDomain);
-        $request->authenticate(new CaproverAuthenticator($this->authToken));
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
         return $this->send($request);
     }
 
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
     public function enableSslForCustomDomain(string $appName, string $customDomain): CaproverResponse
     {
         $request = new EnableSslForCustomDomain($appName, $customDomain);
-        $request->authenticate(new CaproverAuthenticator($this->authToken));
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
         return $this->send($request);
     }
 
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
     public function removeCustomDomain(string $appName, string $customDomain): CaproverResponse
     {
         $request = new RemoveCustomDomain($appName, $customDomain);
-        $request->authenticate(new CaproverAuthenticator($this->authToken));
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
         return $this->send($request);
     }
 
@@ -87,6 +97,24 @@ class Caprover extends Connector
         return [
             'x-namespace' => 'captain'
         ];
+    }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    protected function getLastRememberedToken(): string
+    {
+        if (!is_null($this->authToken)) {
+            return $this->authToken;
+        }
+        $getToken = $this->getAuthToken();
+        $getToken->throw();
+        $this->authToken = $getToken->json('data.token');
+        return $this->authToken;
     }
 
     protected function defaultConfig(): array
