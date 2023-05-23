@@ -2,6 +2,8 @@
 
 namespace Ariaieboy\Caprover;
 
+use Ariaieboy\Caprover\Common\CaproverAuthenticator;
+use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
 use Ariaieboy\Caprover\Responses\CaproverResponse;
 use JsonException;
@@ -45,6 +47,18 @@ class Caprover extends Connector
     public function getAuthToken(): CaproverResponse
     {
         return $this->send(new GetAuthToken($this->password));
+    }
+
+    /**
+     * @throws ReflectionException
+     * @throws InvalidResponseClassException
+     * @throws PendingRequestException
+     */
+    public function attachNewCustomDomainToApp(string $appName, string $customDomain): CaproverResponse
+    {
+        $request = new AttachNewCustomDomainToApp($appName, $customDomain);
+        $request->authenticate(new CaproverAuthenticator($this->authToken));
+        return $this->send($request);
     }
 
     public function resolveBaseUrl(): string
