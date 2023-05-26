@@ -24,4 +24,5 @@ uses(TestCase::class)->beforeEach(function (){
     $this->caprover->withMockClient($this->mockClient);
     $this->test_app = $_ENV['CAPROVER_TEST_APP'];
     $this->test_domain = $_ENV['CAPROVER_TEST_DOMAIN'];
+    $this->caprover_domain = $_ENV['CAPROVER_SERVER'];
 })->in(__DIR__);
