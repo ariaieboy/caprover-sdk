@@ -87,13 +87,25 @@ $caprover->getCaptainInfo();
 $caprover->getAuthToken();
 
 //Attach a new domain to an app
-$caprover->attachNewCustomDomainToApp('app name','domain');
+$caprover->attachNewCustomDomainToApp(appName: string,customDomain: string);
 
 //Enable SSL for a custom domain on an app
-$caprover->enableSslForCustomDomain('app name','domain');
+$caprover->enableSslForCustomDomain(appName: string,customDomain: string);
 
 //Remove a Custom domain from an app
-$caprover->removeCustomDomain('appname','domain');
+$caprover->removeCustomDomain(appName: string,customDomain: string);
+
+//Force Ssl on captain root domain
+$caprover->forceSsl(isEnabled: bool);
+
+//Change Captain root domain
+$caprover->updateRootDomain(rootDomain: string);
+
+//Enable root domain SSL
+$caprover->enableRootSsl(emailAddress: string);
+
+//Get All Apps
+$caprover->getAllApps();
 ```
 
 ## Testing

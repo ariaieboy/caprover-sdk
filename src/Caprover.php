@@ -4,10 +4,14 @@ namespace Ariaieboy\Caprover;
 
 use Ariaieboy\Caprover\Common\CaproverAuthenticator;
 use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
+use Ariaieboy\Caprover\Requests\EnableRootSsl;
 use Ariaieboy\Caprover\Requests\EnableSslForCustomDomain;
+use Ariaieboy\Caprover\Requests\ForceSsl;
+use Ariaieboy\Caprover\Requests\GetAllApps;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
 use Ariaieboy\Caprover\Requests\GetCaptainInfo;
 use Ariaieboy\Caprover\Requests\RemoveCustomDomain;
+use Ariaieboy\Caprover\Requests\UpdateRootDomain;
 use Ariaieboy\Caprover\Responses\CaproverResponse;
 use JsonException;
 use ReflectionException;
@@ -81,12 +85,69 @@ class Caprover extends Connector
      * @throws PendingRequestException
      * @throws JsonException
      */
+    public function forceSsl(bool $isEnabled): CaproverResponse
+    {
+        $request = new ForceSsl($isEnabled);
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function updateRootDomain(string $rootDomain): CaproverResponse
+    {
+        $request = new UpdateRootDomain($rootDomain);
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function enableRootSsl(string $emailAddress): CaproverResponse
+    {
+        $request = new EnableRootSsl($emailAddress);
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
     public function getCaptainInfo(): CaproverResponse
     {
         $request = new GetCaptainInfo();
         $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
         return $this->send($request);
     }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function getAllApps(): CaproverResponse
+    {
+        $request = new GetAllApps();
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
+
     /**
      * @throws InvalidResponseClassException
      * @throws Throwable

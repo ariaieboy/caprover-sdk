@@ -13,11 +13,16 @@ uses(TestCase::class)->beforeEach(function (){
             $fake = \Illuminate\Support\Arr::first(array_filter($request->body()?->all()??[],function ($var){
                 return preg_match("/fake\.*/",$var);
             }))??'';
-            return MockResponse::fixture($reflection->getShortName().$fake);
+            $str = '';
+            if ($reflection->getShortName() === 'ForceSsl'){
+                $str = $request->body()->all()['isEnabled']?'true':'false';
+            }
+            return MockResponse::fixture($reflection->getShortName().$fake.$str);
         },
     ]);
     $this->caprover = new \Ariaieboy\Caprover\Caprover($_ENV['CAPROVER_SERVER'],$_ENV['CAPROVER_PASSWORD']);
     $this->caprover->withMockClient($this->mockClient);
     $this->test_app = $_ENV['CAPROVER_TEST_APP'];
     $this->test_domain = $_ENV['CAPROVER_TEST_DOMAIN'];
+    $this->caprover_domain = $_ENV['CAPROVER_SERVER'];
 })->in(__DIR__);
