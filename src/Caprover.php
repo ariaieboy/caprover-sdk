@@ -5,6 +5,7 @@ namespace Ariaieboy\Caprover;
 use Ariaieboy\Caprover\Common\CaproverAuthenticator;
 use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
 use Ariaieboy\Caprover\Requests\EnableSslForCustomDomain;
+use Ariaieboy\Caprover\Requests\ForceSsl;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
 use Ariaieboy\Caprover\Requests\GetCaptainInfo;
 use Ariaieboy\Caprover\Requests\RemoveCustomDomain;
@@ -74,6 +75,19 @@ class Caprover extends Connector
         return $this->send($request);
     }
 
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function forceSsl(bool $isEnabled): CaproverResponse
+    {
+        $request = new ForceSsl($isEnabled);
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
     /**
      * @throws InvalidResponseClassException
      * @throws Throwable
