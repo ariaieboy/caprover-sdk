@@ -7,6 +7,7 @@ use Ariaieboy\Caprover\Requests\AttachNewCustomDomainToApp;
 use Ariaieboy\Caprover\Requests\EnableRootSsl;
 use Ariaieboy\Caprover\Requests\EnableSslForCustomDomain;
 use Ariaieboy\Caprover\Requests\ForceSsl;
+use Ariaieboy\Caprover\Requests\GetAllApps;
 use Ariaieboy\Caprover\Requests\GetAuthToken;
 use Ariaieboy\Caprover\Requests\GetCaptainInfo;
 use Ariaieboy\Caprover\Requests\RemoveCustomDomain;
@@ -129,6 +130,20 @@ class Caprover extends Connector
     public function getCaptainInfo(): CaproverResponse
     {
         $request = new GetCaptainInfo();
+        $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
+        return $this->send($request);
+    }
+
+    /**
+     * @throws InvalidResponseClassException
+     * @throws Throwable
+     * @throws ReflectionException
+     * @throws PendingRequestException
+     * @throws JsonException
+     */
+    public function getAllApps(): CaproverResponse
+    {
+        $request = new GetAllApps();
         $request->authenticate(new CaproverAuthenticator($this->getLastRememberedToken()));
         return $this->send($request);
     }
