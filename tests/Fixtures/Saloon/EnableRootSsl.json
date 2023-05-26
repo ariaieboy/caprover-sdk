@@ -1,0 +1,1 @@
+{"statusCode":200,"headers":{"Server":"nginx","Date":"Fri, 26 May 2023 09:57:54 GMT","Content-Type":"application\/json; charset=utf-8","Content-Length":"58","Connection":"close","X-Powered-By":"Express","ETag":"W\/\"3a-Wjl2CAqzrWaUYqClMgDUEsCE+AQ\""},"data":"{\"status\":100,\"description\":\"Root SSL Enabled.\",\"data\":{}}"}
