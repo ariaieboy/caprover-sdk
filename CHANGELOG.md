@@ -2,6 +2,10 @@
 
 All notable changes to `caprover-laravel` will be documented in this file.
 
+## 1.1.2 - 2024-09-29
+
+**Full Changelog**: https://github.com/ariaieboy/caprover-sdk/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2023-10-19
 
 ### What's Changed
@@ -20,6 +24,7 @@ getAllApps
 enableRootSsl
 updateRootDomain
 forceSsl
+
 
 
 ```
